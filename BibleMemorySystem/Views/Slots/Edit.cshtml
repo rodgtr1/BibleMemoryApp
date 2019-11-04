@@ -1,0 +1,64 @@
+﻿@model BibleMemorySystem.Models.Slot
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Slot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SlotId" />
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotName" class="control-label"></label>
+                <input asp-for="SlotName" class="form-control" />
+                <span asp-validation-for="SlotName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Frequency" class="control-label"></label>
+                <input asp-for="Frequency" class="form-control" />
+                <span asp-validation-for="Frequency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrequencyDetail" class="control-label"></label>
+                <input asp-for="FrequencyDetail" class="form-control" />
+                <span asp-validation-for="FrequencyDetail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrequencyDay" class="control-label"></label>
+                <input asp-for="FrequencyDay" class="form-control" />
+                <span asp-validation-for="FrequencyDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrequencyMonth" class="control-label"></label>
+                <input asp-for="FrequencyMonth" class="form-control" />
+                <span asp-validation-for="FrequencyMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacketId" class="control-label"></label>
+                <select asp-for="PacketId" class="form-control" asp-items="ViewBag.PacketId"></select>
+                <span asp-validation-for="PacketId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
