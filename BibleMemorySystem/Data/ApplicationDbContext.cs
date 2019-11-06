@@ -16,5 +16,6 @@ namespace BibleMemorySystem.Data
         public DbSet<BibleMemorySystem.Models.Verse> Verse { get; set; }
         public DbSet<BibleMemorySystem.Models.Packet> Packet { get; set; }
         public DbSet<BibleMemorySystem.Models.Slot> Slot { get; set; }
+        public DbSet<BibleMemorySystem.Models.Receiver> Receiver { get; set; }
     }
 }

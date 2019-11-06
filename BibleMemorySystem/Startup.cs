@@ -37,6 +37,7 @@ namespace BibleMemorySystem
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.Configure<TwilioAccountDetails>(Configuration.GetSection("TwilioAccountDetails"));
             services.Configure<TwilioPhoneDetails>(Configuration.GetSection("TwilioPhoneDetails"));
+            services.Configure<SignupDetails>(Configuration.GetSection("SignupDetails"));
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

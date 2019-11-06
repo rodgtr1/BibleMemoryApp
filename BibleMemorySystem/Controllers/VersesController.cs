@@ -36,6 +36,7 @@ namespace BibleMemorySystem.Controllers
         {
             var verses = _context.Verse;
             return View(await verses.Where(v => v.UserId == GetCurrentUserId()).ToListAsync());
+            return View(await _context.Verse.ToListAsync());
         }
 
         // GET: Verses/Details/5
@@ -174,7 +175,16 @@ namespace BibleMemorySystem.Controllers
 
             var currentUserName = User.Identity.Name;
             var userResult = _context.Users.FirstOrDefault(u => u.UserName == currentUserName);
+            var numbersResult = _context.Receiver.Select(r => r.UserPhone).ToList();
             var userPhone = userResult.PhoneNumber;
+
+            List<string> otherNumbers = new List<string>();
+            foreach(var number in numbersResult)
+            {
+                otherNumbers.Add(number);
+            }
+            otherNumbers.Add(userPhone);
+
 
             foreach (var verse in _context.Verse)
             {
@@ -377,7 +387,7 @@ namespace BibleMemorySystem.Controllers
                 }
             }
             _context.SaveChanges();
-            BibleMemorySystem.Services.SMS.SendMessage(currentVerses, reviewVerses, userPhone, _twilioAccountDetails.AccountSid, _twilioAccountDetails.AuthToken, _twilioPhoneDetails.TwilioPhoneNumber);
+            BibleMemorySystem.Services.SMS.SendMessage(currentVerses, reviewVerses, otherNumbers, _twilioAccountDetails.AccountSid, _twilioAccountDetails.AuthToken, _twilioPhoneDetails.TwilioPhoneNumber);
         }
 
         public async Task VerseLifeCycle()
