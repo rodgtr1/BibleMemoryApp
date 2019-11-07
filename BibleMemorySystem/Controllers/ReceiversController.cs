@@ -30,7 +30,6 @@ namespace BibleMemorySystem.Controllers
         {
             
             var messagingResponse = new MessagingResponse();
-            string unauthorized = "Sorry you are not authorized to use this service";
             if (incomingMessage.Body.Contains(_signupDetails.Signup))
             {
                 var m = incomingMessage.Body.Split(' ');
@@ -88,7 +87,7 @@ namespace BibleMemorySystem.Controllers
             }
             else
             {
-                messagingResponse.Message(unauthorized);
+                //messagingResponse.Message(unauthorized);
             }
 
             return TwiML(messagingResponse);
